@@ -1,0 +1,19 @@
+
+
+<script>
+    form = document.getElementById('new-car');
+    function response(event){
+        alert(event.response);
+    }
+
+    function submitCar(event){
+        event.preventDefault();
+        let formData = new FormData(this);
+        console.dir(formData);
+        let xhr = new XMLHttpRequest();
+        xhr.open('get','new_car.php');
+        xhr.onload = response;
+        xhr.send(formData);
+    }
+    form.onsubmit = submitCar;
+</script>
