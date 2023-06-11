@@ -2,6 +2,7 @@
 <body>
 <?php
 $naam = $email = "" ; // alle variabelen zijn leeg
+$naamErr = $emailErr = ""
 if ($_SERVER["REQUEST_METHOD"] == "POST") { // als de methode post is dan krijgen de variabelen de waardes die worden ingevuld
     $naam = test_input($_POST["naam"]);
     $email = test_input($_POST["email"]);
@@ -14,6 +15,14 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])){
+        $naamErr = 
+
+    }
+}
+
   
 ?>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
