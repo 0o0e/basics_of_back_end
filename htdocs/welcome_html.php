@@ -1,13 +1,18 @@
 <html>
 <body>
+<style>
+    .error {color: #FF0000;}
+
+</style>
 <?php
 $naam = $email = "" ; // alle variabelen zijn leeg
-$naamErr = $emailErr = ""
-if ($_SERVER["REQUEST_METHOD"] == "POST") { // als de methode post is dan krijgen de variabelen de waardes die worden ingevuld
-    $naam = test_input($_POST["naam"]);
-    $email = test_input($_POST["email"]);
+$naamErr = $emailErr = "";
 
-}
+// if($_SERVER["REQUEST_METHOD"] == "POST") { // als de methode post is dan krijgen de variabelen de waardes die worden ingevuld
+//     $naam = test_input($_POST["naam"]);
+//     $email = test_input($_POST["email"]);
+
+// }
 
 function test_input($data) {
     $data = trim($data);
@@ -17,17 +22,27 @@ function test_input($data) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["name"])){
-        $naamErr = 
-
+    if (empty($_POST["naam"])){
+        $naamErr = "name is required";
+    }else{
+        $naam = test_input($_POST["naam"]);
     }
+
+    if (empty($_POST["email"])){
+        $emailErr = "email is required";
+    }else{
+        $email = test_input($_POST["email"]);
+    }
+
 }
 
   
 ?>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 naam: <input type="text" name="naam"><br>
+<span class="error">* <?php echo $naamErr;?></span> <br>
 email: <input type="text" name="email"><br>
+<span class="error">* <?php echo $emailErr;?></span> <br>
 <input type="submit">
 </form>
 
