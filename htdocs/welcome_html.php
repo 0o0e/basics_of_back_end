@@ -8,11 +8,6 @@
 $naam = $email = "" ; // alle variabelen zijn leeg
 $naamErr = $emailErr = "";
 
-// if($_SERVER["REQUEST_METHOD"] == "POST") { // als de methode post is dan krijgen de variabelen de waardes die worden ingevuld
-//     $naam = test_input($_POST["naam"]);
-//     $email = test_input($_POST["email"]);
-
-// }
 
 function test_input($data) {
     $data = trim($data);
